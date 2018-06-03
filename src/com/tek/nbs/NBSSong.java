@@ -1,5 +1,6 @@
 package com.tek.nbs;
 
+import java.awt.Point;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -352,6 +353,18 @@ public class NBSSong {
 		}
 		
 		return notesGlobal;
+	}
+	
+	public HashMap<Point, Note> annexNotes() {
+		HashMap<Point, Note> notes = new HashMap<Point, Note>();
+		
+		for(Chord chord : chords) {
+			for(Note note : chord.getNotes()) {
+				notes.put(new Point(chord.getTick(), note.getLayer()), note);
+			}
+		}
+		
+		return notes;
 	}
 	
 	public Note getNote(int chord, int layer) {
