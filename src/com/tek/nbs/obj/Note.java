@@ -1,5 +1,7 @@
 package com.tek.nbs.obj;
 
+import com.tek.nbs.enums.Instruments;
+
 public class Note {
 	
 	private byte instrument, key;
@@ -35,6 +37,10 @@ public class Note {
 		this.layer = layer;
 	}
 
+	public Instruments getAssociatedInstrument() {
+		return Instruments.byId(this.instrument);
+	}
+	
 	public com.xxmicloxx.NoteBlockAPI.Note toNoteBlockAPINote(){
 		return new com.xxmicloxx.NoteBlockAPI.Note(instrument, key);
 	}
